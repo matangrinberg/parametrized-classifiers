@@ -12,17 +12,17 @@ import tensorflow as tf
 # z coordinate determines the x-coordinate of the mean, mu = (z, 0)
 
 def mean_gen(theta, phi):
-    mu = 0.5 - (np.sqrt(2)/2) * np.cos(phi + np.pi / 4)
+    mu = (1 - np.cos(phi)) / 2
     return mu
 
 
 def varx_gen(theta, phi):
-    vx = 1.5 - (np.sqrt(2)/2) * np.cos(theta + np.pi / 4) * np.sin(phi + np.pi / 2)
+    vx = 1 - np.cos(theta) * np.sin(phi) / 2
     return vx
 
 
 def vary_gen(theta, phi):
-    vy = 1.5 - (np.sqrt(2)/2) * np.sin(theta + np.pi / 4) * np.sin(phi + np.pi / 2)
+    vy = 1 - np.sin(theta) * np.sin(phi) / 2
     return vy
 
 
