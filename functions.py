@@ -65,6 +65,7 @@ def test_on_integers(x_train, y_train):
     names.append('discrete_model_th2_ph2')
     names.append('discrete_model_th1_ph1')
     names.append('discrete_model_th0_ph0')
+    names.append('discrete_model_mth40_mph40')
 #     names.append('discrete_model_mth15_mph15')
 
     l = len(names)
@@ -95,5 +96,10 @@ def learn_parameters(model_pf, x_train, y_train, iterations=20, epochs=1, batch_
 #         print(np.sum(-y_train * np.log(x) - (1-y_train) * np.log(1-x)) / x.shape[0])
 
     return model_pf.trainable_weights[:][0][0]
-    
+
  
+def likelihood_ratio(x, theta, phi):
+    background = (1 / (2 * np.pi)) * np.exp(-(1 / 2) * (np.linalg.norm(x) ** 2))
+    return background
+
+    
