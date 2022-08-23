@@ -101,12 +101,13 @@ def learn_parameters(model_pf, x_train, y_train, iterations=20, epochs=1, batch_
 def compare_learning(model_pf1, model_pf2, angles, x_train, y_train, iterations=20, epochs=1, batch_size=100):
     e, b = epochs, batch_size
     x_inputs = x_train[:, 0:2]
+    print('Initialized at ', model_pf1.trainable_weights[:][0][0], model_pf2.trainable_weights[:][0][0])
     
     for i in range(iterations):
         model_pf1.fit(x_inputs, y_train, epochs=e, batch_size=b)
         model_pf2.fit(x_inputs, y_train, epochs=e, batch_size=b)
-#         print(i,"Fitted result 1: ", model_pf1.trainable_weights[:][0][0])
-#         print(i,"Fitted result 2: ", model_pf2.trainable_weights[:][0][0])
+        print(i,"Fitted result 1: ", model_pf1.trainable_weights[:][0][0])
+        print(i,"Fitted result 2: ", model_pf2.trainable_weights[:][0][0])
         
         angle_errors1 = (angles - model_pf1.trainable_weights[:][0][0]) / angles
         angle_errors2 = (angles - model_pf2.trainable_weights[:][0][0]) / angles
