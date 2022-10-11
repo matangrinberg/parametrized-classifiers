@@ -9,8 +9,8 @@ from scipy.stats import chi
 from scipy import stats
 from tensorflow.keras.layers import Input, Dense
 from tensorflow.keras.models import Model, Sequential
-from functions import mean_gen, varx_gen, vary_gen, spherical_data, test_on_integers
-from functions import learn_parameters, likelihood_ratio, compare_learning, compare_learning_thorough
+from utils.functions import mean_gen, varx_gen, vary_gen, spherical_data, test_on_integers
+from utils.functions import learn_parameters, likelihood_ratio, compare_learning, compare_learning_thorough
 from tensorflow.python.framework.ops import disable_eager_execution
 
 
