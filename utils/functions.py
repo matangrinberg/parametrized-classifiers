@@ -134,6 +134,9 @@ def compare_learning(model_pf1, model_pf2, angles, x_train, y_train, iterations=
     e2 = 100 * np.sum(np.abs((angles - a2) / angles), axis = 1)/2
 
     plt.plot(np.arange(e1.shape[0]), e1, e2)
+    plt.ylabel('Error %')
+    plt.xlabel('Iteration')
+    plt.legend(['Model 1', 'Model 2'])
         
 
     return list1, list2
