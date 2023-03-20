@@ -27,7 +27,7 @@ while (boolisphoton):
     particlesForJets = []
     for i in range(evgen.event.size()):
         p = fastjet.PseudoJet(evgen.event[i].px(), evgen.event[i].py(), evgen.event[i].pz(), evgen.event[i].e())
-        p.set_user_index(evgen.event[i].id())
+        p.set_user_index(i)
         if (evgen.event[i].isFinal()==False):
             continue;
         if (abs(evgen.event[i].id())==12):
@@ -48,7 +48,7 @@ while (boolisphoton):
         if (len(myJets[0].constituents())==1):
             myid = myJets[0].constituents()[0].user_index()
             origin = 0
-            while (evgen.event[myid]==22):
+            while (evgen.event[myid].id()==22):
                 myid = evgen.event[myid].mother1()
                 origin = evgen.event[myid].id()
                 pass
@@ -58,12 +58,12 @@ while (boolisphoton):
             pass
         pass
 
-    if (len(myJets)==0):
-        boolisphoton = True
-    else:
-        outstring = ""
-        for i in range(len(myJets[0].constituents())):
-            outstring+=str(myJets[0].constituents()[i].px())+" "+str(myJets[0].constituents()[i].py()) + " "+str(myJets[0].constituents()[i].pz()) + str(myJets[0].constituents()[i].user_index())
-            pass
-        print(outstring)
-        
+        if (len(myJets)==0):
+            boolisphoton = True
+        else:
+            outstring = ""
+            for i in range(len(myJets[0].constituents())):
+                outstring+=str(myJets[0].constituents()[i].px())+" "+str(myJets[0].constituents()[i].py()) + " "+str(myJets[0].constituents()[i].pz()) + str(myJets[0].constituents()[i].user_index())
+                pass
+            print(outstring)
+            
